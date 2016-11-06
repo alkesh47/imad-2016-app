@@ -16,11 +16,11 @@ header {
         text-align:center;
 }
 
-h1 {
+#title {
     size:80px
     color: white;
     font-weight:500;
-    border: 10px solid white;
+    border: 5px solid white;
     display:inline-block;
 }
 
