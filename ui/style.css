@@ -14,8 +14,10 @@ header {
     height:800px;
     width:auto;
     text-align:center;
-    font-family:Sacramento;
+
     span {
+        size:80px
+        border: white solid 10px;
         display:inline-block;
         
 }
