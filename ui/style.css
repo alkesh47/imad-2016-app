@@ -18,7 +18,8 @@ header {
 }
 
 h1 {
-    border: 1px solid white;
+    border: 5px solid white;
+    font-size:200%;
     display:inline-block;
 }
 
