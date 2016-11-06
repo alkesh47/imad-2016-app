@@ -16,7 +16,7 @@ a {
 }
 
 header {
-        background-image: url("header.png");
+        background-color:pink;
         background-size:cover;
         height:800px;
         width:auto;
