@@ -17,7 +17,8 @@ header {
 
     span {
         size:80px
-        border: white solid 10px;
+        color:white;
+        border: 10px solid white;
         display:inline-block;
         
 }
