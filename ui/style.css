@@ -48,8 +48,20 @@ span{
     margin-right:500px;
 }
 
+#sec2{
+    text-align:center;
+    margin-left:250px;
+    margin-right:250px;
+}
+
 #image1{
     float:right;
+    border-radius:60%;
+}
+
+#image2{
+    float:left;
+    border-radius:60%;
 }
 
 
