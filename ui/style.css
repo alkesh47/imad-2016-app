@@ -13,6 +13,7 @@ header {
     background-size:cover;
     height:800px;
     width:auto;
+    text-align:center;
     span {
         display:inline-block;
         
