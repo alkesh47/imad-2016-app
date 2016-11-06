@@ -49,19 +49,20 @@ span{
 }
 
 #sec2{
-    margin-left:250px;
-    margin-right:250px;
+    margin-left:300px;
+    margin-right:300px;
 }
 
 #image1{
     float:right;
     border-radius:60%;
-    margin-left:200px;
+    margin-left:250px;
 }
 
 #image2{
     float:left;
     border-radius:60%;
+    margin-right:250px;
 }
 
 
