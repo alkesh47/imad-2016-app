@@ -9,19 +9,19 @@ a {
 }
 
 header {
-    background-image: url("header.png");
-    background-size:cover;
-    height:800px;
-    width:auto;
-    text-align:center;
-
-    span {
-        size:80px
-        color:white;
-        border: 10px solid white;
-        display:inline-block;
-        
+        background-image: url("header.png");
+        background-size:cover;
+        height:800px;
+        width:auto;
+        text-align:center;
 }
+
+h1 {
+    size:80px
+    color: white;
+    font-weight:500;
+    border: 10px solid white;
+    display:inline-block;
 }
 
 
