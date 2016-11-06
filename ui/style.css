@@ -58,6 +58,10 @@ span{
     height:200px;
 }
 
+.clearfix{
+    overflow:auto;
+}
+
 #image1{
     float:right;
     border-radius:60%;
