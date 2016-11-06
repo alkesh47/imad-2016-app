@@ -54,14 +54,14 @@ span{
     margin-right:300px;
 }
 
+.para{
+    height:300px;
+}
+
 #image1{
     float:right;
     border-radius:60%;
     margin-left:250px;
-}
-
-.clearfix{
-    overflow:auto;
 }
 
 #image2{
