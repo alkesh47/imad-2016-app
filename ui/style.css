@@ -57,6 +57,8 @@ span{
 #image1{
     float:right;
     border-radius:60%;
+    margin-left:250px;
+    margin-bottom:100px;
 }
 
 .clearfix{
@@ -66,6 +68,8 @@ span{
 #image2{
     float:left;
     border-radius:60%;
+    margin-right:250px;
+    margin-bottom:100px;
 }
 
 .clearfix{
@@ -78,6 +82,7 @@ p1{
 }
 
 p2{
+    margin-top:100px;
     margin-bottom:100px;
 }
 
