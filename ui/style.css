@@ -11,6 +11,8 @@ a {
 header {
     background-image: url("225H.jpg");
     background-size:cover;
+    height:500px;
+    width:1000px;
 }
 
 
