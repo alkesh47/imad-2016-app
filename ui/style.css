@@ -2,6 +2,7 @@ body {
     font-family: roboto;
     background-color: pink;
     margin-top: 10px;
+    background-image:url("225H.jpg");
 }
 
 a {
@@ -14,6 +15,3 @@ a {
     
 }
 
-#s1{
-    background-image:url("225H.jpg");
-}
