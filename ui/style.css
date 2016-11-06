@@ -1,6 +1,7 @@
 body {
     font-family: roboto;
     margin-top: 10px;
+    background:pink;
 }
 
 a {
@@ -12,5 +13,8 @@ a {
     padding:50px;
 }
 
+header {
+    background-image: url(../225H.jpg);
+}
 
 
