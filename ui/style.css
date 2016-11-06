@@ -55,7 +55,8 @@ span{
 }
 
 .para{
-    height:200px;
+    height:300px;
+    margin:100px 0 100px 0;
 }
 
 .clearfix{
