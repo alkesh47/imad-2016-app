@@ -18,9 +18,11 @@ header {
 }
 
 h1 {
-    border: 5px solid white;
+    border: 10px solid white;
     font-size: 80px;
     display:inline-block;
+    margin-bottom:20px;
+    padding:5px;
 }
 
 
