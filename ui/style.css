@@ -14,12 +14,10 @@ header {
         height:800px;
         width:auto;
         text-align:center;
+        color:white;
 }
 
 #title {
-    size:80px
-    color: white;
-    font-weight:500;
     border: 5px solid white;
     display:inline-block;
 }
