@@ -56,14 +56,13 @@ span{
 #image1{
     float:right;
     border-radius:60%;
-    margin-left:250px;
-    margin-bottom:50px;
+    margin:0 0 0 250px ;
 }
 
 #image2{
     float:left;
     border-radius:60%;
-    margin-right:250px;
+    margin:100px 250px 100px 0;
 }
 
 p1{
