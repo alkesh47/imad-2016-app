@@ -24,6 +24,7 @@ h1 {
     font-size: 80px;
     display:inline-block;
     margin-bottom:20px;
+    vertical-align:middle;
     padding:5px;
 }
 
