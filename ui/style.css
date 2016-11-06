@@ -57,6 +57,7 @@ span{
 #image1{
     float:right;
     border-radius:60%;
+    margin-left:100px;
 }
 
 #image2{
