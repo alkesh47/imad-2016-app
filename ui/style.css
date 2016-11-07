@@ -56,10 +56,12 @@ span{
 
 #para1{
     float:left;
+    clear:both;
 }
 
 #para2{
     float:right;
+    clear:both;
 }
 
 #image1{
