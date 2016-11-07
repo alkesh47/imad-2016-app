@@ -72,6 +72,9 @@ span{
     float:left;
 }
 
+.clearfix{
+    overflow:auto;
+}
 #p1{
     margin-bottom:100px;
 }
