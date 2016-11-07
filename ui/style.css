@@ -54,9 +54,15 @@ span{
     margin-right:300px;
 }
 
-.para{
+.para1{
     height:300px;
-    margin:100px 0 100px 0;
+    margin-top:50px;
+    margin-bottom:100px;
+}
+
+.para2{
+    height:300px;
+    margin-bottom:50px;
 }
 
 .clearfix{
