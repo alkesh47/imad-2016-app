@@ -54,6 +54,13 @@ span{
     margin-right:300px;
 }
 
+#para1{
+    float:left;
+}
+
+#para2{
+    float:right;
+}
 
 #image1{
     float:right;
