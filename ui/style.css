@@ -65,13 +65,11 @@ span{
 
 #image1{
     float:right;
-    border-radius:60%;
     margin-left:250px;
 }
 
 #image2{
     float:left;
-    border-radius:60%;
     margin-right:250px;
 }
 
