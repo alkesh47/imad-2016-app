@@ -1,6 +1,6 @@
 body {
     font-family: roboto;
-    background:pink;
+    background:cyan;
 }
 
 nav{
@@ -18,9 +18,9 @@ a {
 }
 
 header {
-        background-color:pink;
+        background-image: url("header.png");
         background-size:cover;
-        height:800px;
+        height:700px;
         width:auto;
         text-align:center;
         color:white;
@@ -38,53 +38,62 @@ h1 {
     font-size: 30px;
 }
 
-span{
-    font-size:25px;
-}
-
 #sec1{
     text-align:center;
-    margin-left:500px;
-    margin-right:500px;
+    margin: 100px 400px 200px 400px
 }
 
 #sec2{
-    height:600px;
-    margin-left:300px;
-    margin-right:300px;
+  width: auto;
+  margin: 200px 300px 200px 300px
 }
-
-#para1{
-    float:left;
-    clear:both;
+#sec3{
+  clear: both;
+  text-align: center;
+  width: auto;
+  margin: 200px 350px 200px 350px
 }
-
-#para2{
-    float:right;
-    clear:both;
-}
-
 #image1{
     float:right;
+    margin-left: 100px
 }
 
 #image2{
     float:left;
+    margin-right: 100px
 }
 
 .clearfix{
-    overflow:auto;
+  overflow: auto;
 }
+
 #p1{
-    margin-bottom:100px;
+  margin-bottom: 150px
 }
 
-#p2{
-    margin-bottom:50px;
+#heading{
+  font-size: 40px
 }
 
+#end{
+  text-align: center;
+  font-size: 80px
+}
 
+.heading{
+  text-align: center;
+  font-size: 50px
+}
 
+.sub-heading{
+  text-align: left;;
+  font-size: 30px
+}
 
+.paragraph{
+  font-size: 18px
+}
 
-
+.intern{
+  font-size: 25px
+}
