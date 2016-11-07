@@ -63,23 +63,16 @@ span{
     padding-bottom:50px;
 }
 
-.clearfix{
-    overflow:auto;
-}
 
 #image1{
     float:right;
-    margin-left:250px;
 }
 
 #image2{
     float:left;
-    margin-right:250px;
 }
 
-#s3{
-    margin-top:100px;
-}
+
 
 
 
