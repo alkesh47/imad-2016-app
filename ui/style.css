@@ -75,9 +75,9 @@ h1 {
   font-size: 40px
 }
 
-#end{
+#progress-bar{
   text-align: center;
-  font-size: 80px
+  margin-bottom: 200px
 }
 
 .heading{
@@ -96,4 +96,8 @@ h1 {
 
 .intern{
   font-size: 25px
+}
+
+.br{
+  text-align: center;
 }
