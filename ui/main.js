@@ -15,6 +15,6 @@ button.onclick = function(){
   }
 
   // Make a request object
-  request.open('GET', 'http://localhost:8080/counter', true)
+  request.open('GET', 'https://cloud.imad.hasura.io/counter', true)
   request.send(null)
 };
