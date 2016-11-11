@@ -49,6 +49,8 @@ function CreateTemplate(data) {   // This function renders the template
   var title= data.title;
   var date= data.date;          // The first three variables are just placeholders for the fourth one
   var content= data.content;
+  var comment= data.comment;
+  var comment_box = data.comment_box;
   var template=`<html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -66,6 +68,23 @@ function CreateTemplate(data) {   // This function renders the template
     </body>
 
     <hr>
+
+    <body>
+      <h3 id = 'nazi'>
+        Comments
+      </h3>
+
+      <input type="text" id="name" value="input"></input>
+      <br>
+      <input type="submit" id="submitButton" value="Submit"></input>
+      <ul id='nameList'>
+      </ul>
+
+      <hr>
+
+    </body>
+    <script type="text/javascript" src="/ui/main.js">
+    </script>
   </html>`;
   return template;
 }
@@ -83,10 +102,25 @@ app.get('/blog', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'blog.html'));
 });
 
+app.get('/extra', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'extra.html'));
+});
+
 var counter = 0;
 app.get('/counter', function (req, res) {                       // counter end-point
   counter = counter + 1;
-  res.send(counter.toString())
+  res.send(counter.toString());
+});
+
+var names = [];
+app.get('/:NameOfArticle/submit-name', function(req,res){      // Old method of extracting parameter -->>  'submit-name/:name'
+  //GET the names from the request
+  var name = req.query.name;
+  // add it to an array
+  names.push(name);
+
+  //Send the names back to the request
+  res.send(JSON.stringify(names));
 });
 
 app.get('/:NameOfArticle', function (req, res) {

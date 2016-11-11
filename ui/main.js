@@ -1,20 +1,32 @@
-var button= document.getElementById('counter');
-var counter=0;
+//var button= document.getElementById('counterButton');
+//var counter=0;
 
-button.onclick = function(){
-  // Create a request object
+
+//Get the submit button
+var submit= document.getElementById('submitButton');
+submit.onclick = function(){
   var request = new XMLHttpRequest();
+
   request.onreadystatechange = function(){
-    if (request.readystatechange === XMLHttpRequest.DONE) {
-      if (request.status === 200) {
-        var counter = request.responseText;
-        var span = document.getElementById('count');
-        span.innerHTML = count.toString();
+    if (request.readyState === XMLHttpRequest.DONE) {
+      var names = request.responseText;
+      names = JSON.parse(names);
+      var list = '';
+      for (var i = 0; i<names.length;i++){
+        list+= '<li>'+names[i]+'</li>';
       }
+
+      var ul = document.getElementById('nameList');
+      ul.innerHTML = list;
     }
   }
 
-  // Make a request object
-  request.open('GET', 'http://localhost:8080/counter', true)
-  request.send(null)
+  var nameInput = document.getElementById('name');
+  var name = nameInput.value;
+  request.open('GET', 'http://localhost:8080/:NameOfArticle/submit-name?name='+name, true);
+  request.send(null);
 };
+
+
+    //request.open('GET', 'http://localhost:8080/articleTwo?name='+ name, true);
+    //request.send(null);
