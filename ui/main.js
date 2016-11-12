@@ -3,11 +3,12 @@
 
 
 //Get the submit button
-var submit= document.getElementById('submit_Btn');
+var submit= document.getElementById('submit_btn');
 submit.onclick = function(){
   var request = new XMLHttpRequest();
 
   request.onreadystatechange = function(){
+    
     if (request.readyState === XMLHttpRequest.DONE) {
       if(request.status === 200){
           console.log("Logged in");
@@ -21,17 +22,6 @@ submit.onclick = function(){
       else if(request.status === 500){
               alert("Something went wrong");
       }
-      
-      
-      var names = request.responseText;
-      names = JSON.parse(names);
-      var list = '';
-      for (var i = 0; i<names.length;i++){
-        list+= '<li>'+names[i]+'</li>';
-      }
-
-      var ul = document.getElementById('nameList');
-      ul.innerHTML = list;
     }
   }
 
