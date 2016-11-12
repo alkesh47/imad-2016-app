@@ -3,7 +3,7 @@
 
 
 //Get the submit button
-var submit= document.getElementById('submitButton');
+var submit= document.getElementById('submit_Btn');
 submit.onclick = function(){
   var request = new XMLHttpRequest();
 
