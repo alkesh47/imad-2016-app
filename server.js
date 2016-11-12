@@ -217,20 +217,8 @@ app.post('/login', function(req,res){
   });
 });
 
-app.get('/check-login', functon (req,res){
-    if(req.session && req.session.auth && req.session.auth.userId){
-        res.send('You are logged in '+ req.session.auth.userId.toString());
-    }
-    
-    else{
-        res.send('You are not logged in');
-    }
-});
 
-app.get('/logout', function (req,res){
-   delete req.session.auth;
-   res.send("You are not logged in");
-});
+
 
 app.get('/articles/:NameOfArticle', function (req, res) {
    //It is used to extract the name of article into a variable so that we can use to index the correct article.
