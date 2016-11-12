@@ -1,9 +1,22 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var Pool = require('pg').Pool;
+var crypto = require('crypto');
+var bodyParser = require('body-parser');
+
+var config = {
+  host: 'db.imad.hasura-app.io',
+  user: 'alkesh47',
+  port: '5432',
+  password: process.env.DB_PASSWORD,
+  database: 'alkesh47',
+};
+
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 var articles={      // This variable holds all the common part of all the articles
   'articleOne' :{
@@ -57,7 +70,7 @@ function CreateTemplate(data) {   // This function renders the template
     <head>
       <h2>${title}</h2>
       <p>
-        ${date}
+        ${date.toDateString()}
       </p>
     </head>
 
@@ -113,6 +126,22 @@ app.get('/counter', function (req, res) {                       // counter end-p
 
 });
 
+var pool = new Pool(config);
+app.get('/test-db', function (req,res){
+  //Make a query
+  pool.query('SELECT * FROM test', function(err , result){
+    if(err){
+      res.status(500).send(err.toString());
+    }
+
+    else {
+      res.send(JSON.stringify(result));
+    }
+  });
+  //Return a response
+
+});
+
 var names = [];
 app.get('/:NameOfArticle/submit-name', function(req,res){      // Old method of extracting parameter -->>  'submit-name/:name'
   //GET the names from the request
@@ -124,9 +153,52 @@ app.get('/:NameOfArticle/submit-name', function(req,res){      // Old method of 
   res.send(JSON.stringify(names));
 });
 
-app.get('/:NameOfArticle', function (req, res) {
-  var NameOfArticle=req.params.NameOfArticle;        //It is used to extract the name of article into a variable so that we can use to index the correct article.
-  res.send(CreateTemplate(articles[NameOfArticle]));
+function hash(input, salt){
+  var hashed = crypto.pbkdf2Sync(input , salt, 10000, 512, 'sha512');
+  return ['pbkdf2','10000',salt,hashed.toString('hex')].join('$');111
+}
+
+app.get('/hash/:input', function(req,res){
+  var hashedString = hash(req.params.input, 'random-string');
+  res.send(hashedString);
+});
+
+app.post('/create-user', function(req, res){
+  var username = req.body.username;
+  var password = req.body.password;
+
+  salt = crypto.randomBytes(128).toString('hex');
+  var dbString = hash(password, salt);
+  pool.query('INSERT INTO "user" (username,password) VALUES ($1, $2)', [username, dbString], function(err, result){
+    if(err){
+      res.status(500).send(err.toString());
+    }
+
+    else {
+      res.send("User successfully created"+ username);
+    }
+  });
+});
+
+app.get('/articles/:NameOfArticle', function (req, res) {
+   //It is used to extract the name of article into a variable so that we can use to index the correct article.
+   //var NameOfArticle=req.params.NameOfArticle;
+
+   pool.query("SELECT * FROM article WHERE title= $1",[req.params.NameOfArticle], function(err, result){
+     if(err){
+       res.status(500).send(err.toString());
+     }
+     else{
+       if(result.rows.length === 0){
+         res.sendStatus(404).send('Article not Found');
+       }
+
+       else {
+         var articleData = result.rows[0];
+         res.send(CreateTemplate(articleData));
+       }
+     }
+   });
 });
 
 app.get('/ui/style.css', function (req, res) {
