@@ -24,7 +24,7 @@ submit.onclick = function(){
 
   var nameInput = document.getElementById('name');
   var name = nameInput.value;
-  request.open('GET', 'http://localhost:8080/:NameOfArticle/submit-name?name='+name, true);
+  request.open('GET', 'http://cloud.imad.hasura.io/alkesh47/:NameOfArticle/submit-name?name='+name, true);
   request.send(null);
 
 };
