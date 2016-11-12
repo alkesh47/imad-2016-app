@@ -219,7 +219,7 @@ app.post('/login', function(req,res){
 
 app.get('/check-login', functon (req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
-        res.send('You are logged in '+req.session.auth.userId.toString());
+        res.send('You are logged in '+ req.session.auth.userId.toString());
     }
     
     else{
