@@ -1,6 +1,3 @@
-//var button= document.getElementById('counterButton');
-//var counter=0;
-
 
 //Get the submit button
 var submit= document.getElementById('submit_btn');
@@ -31,10 +28,9 @@ submit.onclick = function(){
   console.log(username);
   console.log(password);
   
-  request.open('POST', 'http://alkesh47.cloud.imad.hasura.io/login', true);
+  request.open('POST', 'http://alkesh47.imad.hasura-app.io/login', true);
   request.setRequestHeader('Content-Type','application/json');
   request.send(JSON.stringify({username:username , password:password}));
-
 };
 
 
