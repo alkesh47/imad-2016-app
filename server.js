@@ -180,6 +180,35 @@ app.post('/create-user', function(req, res){
   });
 });
 
+app.post('/login', function(req,res){
+  var username = req.body.username;
+  var password = req.body.password;
+
+  pool.query('SELECT * FROM "user" username=$1', [username], function(err, result){
+    if(err){
+      res.status(500).send(err.toString());
+    }
+
+    else {
+        if(result.rows.length === 0){
+            res.send(403).send("USername/Password is invalid");
+        }
+        else{
+            var dbString = result.rows[0].password;
+            var salt = dbString.split('$')[2];
+            var hashedPassword = hash(password,salt);
+            if(hashedPassword === dbString){
+                res.send("Correct Credentials");    
+            }
+            else{
+                res.send(403).send("USername/Password is invalid");
+            }
+               
+        }
+    }
+  });
+});
+
 app.get('/articles/:NameOfArticle', function (req, res) {
    //It is used to extract the name of article into a variable so that we can use to index the correct article.
    //var NameOfArticle=req.params.NameOfArticle;
