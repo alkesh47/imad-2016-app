@@ -227,6 +227,11 @@ app.get('/check-login', functon (req,res){
     }
 });
 
+app.get('/logout', function (req,res){
+   delete req.session.auth;
+   res.send("You are not logged in");
+});
+
 app.get('/articles/:NameOfArticle', function (req, res) {
    //It is used to extract the name of article into a variable so that we can use to index the correct article.
    //var NameOfArticle=req.params.NameOfArticle;
