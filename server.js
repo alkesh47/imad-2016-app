@@ -20,7 +20,9 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
     secret: "someRandomSecretValue",
-    cookie: {maxAge: 1000*60*60*24*30}
+    cookie: {maxAge: 1000*60*60*24*30},
+    resave: true,
+    saveUninitialized: true
 }));
 
 var articles={      // This variable holds all the common part of all the articles
@@ -205,23 +207,23 @@ app.post('/login', function(req,res){
             if(hashedPassword === dbString){
                 //set the session
                 req.session.auth = {userId: result.rows[0].id};
-                
-                res.send("Correct Credentials");    
+
+                res.send("Correct Credentials");
             }
             else{
                 res.send(403).send("USername/Password is invalid");
             }
-               
+
         }
     }
   });
 });
 
-app.get('/check-login', functon (req,res){
+app.get('/check-login', function (req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
         res.send('You are logged in '+ req.session.auth.userId.toString());
     }
-    
+
     else{
         res.send('You are not logged in');
     }
@@ -230,7 +232,7 @@ app.get('/check-login', functon (req,res){
 
 app.get('/logout', function (req,res){
    delete req.session.auth;
-   res.send("You are not logged in");
+   res.send("You have been logged out");
 });
 
 
