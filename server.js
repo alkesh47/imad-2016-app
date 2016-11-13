@@ -111,15 +111,47 @@ function CreateTemplate(data) {   // This function renders the template
 
 
 app.get('/', function (req, res) {
+  console.log("Page loaded");
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+
 });
+
+app.get('/ui/assets/css/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/assets/css', file));
+});
+
+app.get('/ui/assets/fonts/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/assets/fonts', file));
+});
+
+app.get('/ui/assets/img/portfolio/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/assets/img/portfolio', file));
+});
+
+app.get('/ui/assets/img/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/assets/img/', file));
+});
+
+app.get('/ui/assets/js/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/assets/js', file));
+});
+
+app.get('/ui/:fileName', function (req, res) {
+  var file = req.params.fileName;
+  res.sendFile(path.join(__dirname, 'ui/', file));
+});
+
+//app.get('/ui/assets/css/main.css', function (req, res) {
+  //res.sendFile(path.join(__dirname, 'ui/assets/css', 'main.css'));
+//});
 
 app.get('/profile', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'profile.html'));
-});
-
-app.get('/blog', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'blog.html'));
 });
 
 app.get('/extra', function (req, res) {
@@ -229,13 +261,10 @@ app.get('/check-login', function (req,res){
     }
 });
 
-
 app.get('/logout', function (req,res){
    delete req.session.auth;
    res.send("You have been logged out");
 });
-
-
 
 app.get('/articles/:NameOfArticle', function (req, res) {
    //It is used to extract the name of article into a variable so that we can use to index the correct article.
@@ -258,11 +287,7 @@ app.get('/articles/:NameOfArticle', function (req, res) {
    });
 });
 
-app.get('/ui/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-});
-
-app.get('/ui/main.js', function (req, res) {
+app.get('/ui/assets/js/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
