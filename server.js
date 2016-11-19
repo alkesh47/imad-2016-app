@@ -5,6 +5,11 @@ var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
 var session = require("express-session");
+//var hbs = require('express-handlebars');
+
+//app.engine('hbs', hbs({extname:'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/assets/layouts/'}));
+//app.set('css',path.join(__dirname, 'css'));
+//app.set('view engine','hbs');
 
 var config = {
   host: 'db.imad.hasura-app.io',
@@ -64,48 +69,31 @@ var articles={      // This variable holds all the common part of all the articl
     }
 };
 
-
 function CreateTemplate(data) {   // This function renders the template
   var title= data.title;
   var date= data.date;          // The first three variables are just placeholders for the fourth one
   var content= data.content;
   var comment= data.comment;
   var comment_box = data.comment_box;
-  var template=`<html>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  var template=`
+    <!-- +++++ Posts Lists +++++ -->
+  	<!-- +++++ First Post +++++ -->
+    <div id="grey">
+        <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <p><img src="ui/assets/img/user.png" width="50px" height="50px"> <ba>Stanley Stinson</ba></p>
+            <p><bd>${date}</bd></p>
+            <h4>${title}</h4>
+            <!-- <p><img class="img-responsive" src="ui/assets/img/blog01.jpg" alt=""></p> -->
+            <p>${content}</p>
+            <p><a href="blog01.html">Continue Reading...</a></p>
+          </div>
 
-    <head>
-      <h2>${title}</h2>
-      <p>
-        ${date.toDateString()}
-      </p>
-    </head>
-
-    <hr>
-
-    <body>
-      ${content}
-    </body>
-
-    <hr>
-
-    <body>
-      <h3 id = 'nazi'>
-        Comments
-      </h3>
-
-      <input type="text" id="name" value="input"></input>
-      <br>
-      <input type="submit" id="submitButton" value="Submit"></input>
-      <ul id='nameList'>
-      </ul>
-
-      <hr>
-
-    </body>
-    <script type="text/javascript" src="/ui/main.js">
-    </script>
-  </html>`;
+        </div><!-- /row -->
+        </div> <!-- /container -->
+    </div><!-- /white -->
+`;
   return template;
 }
 
@@ -113,6 +101,12 @@ function CreateTemplate(data) {   // This function renders the template
 app.get('/', function (req, res) {
   console.log("Page loaded");
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+
+});
+
+app.get('/work', function (req, res) {
+  console.log("Page loaded");
+  res.sendFile(path.join(__dirname, 'ui', 'work.html'));
 
 });
 
@@ -146,17 +140,8 @@ app.get('/ui/:fileName', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui/', file));
 });
 
-//app.get('/ui/assets/css/main.css', function (req, res) {
-  //res.sendFile(path.join(__dirname, 'ui/assets/css', 'main.css'));
-//});
 
-app.get('/profile', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'profile.html'));
-});
 
-app.get('/extra', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'extra.html'));
-});
 
 var counter = 0;
 app.get('/counter', function (req, res) {                       // counter end-point
@@ -266,57 +251,15 @@ app.get('/logout', function (req,res){
    res.send("You have been logged out");
 });
 
-app.get('/articles/:NameOfArticle', function (req, res) {
-   //It is used to extract the name of article into a variable so that we can use to index the correct article.
-   //var NameOfArticle=req.params.NameOfArticle;
+app.get('/blog', function (req, res) {
 
-   pool.query("SELECT * FROM article WHERE title= $1",[req.params.NameOfArticle], function(err, result){
-     if(err){
-       res.status(500).send(err.toString());
-     }
-     else{
-       if(result.rows.length === 0){
-         res.sendStatus(404).send('Article not Found');
-       }
-
-       else {
-         var articleData = result.rows[0];
-         res.send(CreateTemplate(articleData));
-       }
-     }
    });
+
+app.get('/test-bars', function(req, res){
+  res.render('index', {title: 'Cool Huh', condition: false});
 });
 
-app.get('/ui/assets/js/main.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
-});
 
-app.get('/ui/madi.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
-
-app.get('/ui/header.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'header.png'));
-});
-
-app.get('/ui/develop.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'develop.png'));
-});
-app.get('/ui/design.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'design.png'));
-});
-
-app.get('/ui/circle2.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'circle2.png'));
-});
-
-app.get('/ui/boy.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'boy.png'));
-});
-
-app.get('/ui/thatsall.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'thatsall.jpg'));
-});
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
