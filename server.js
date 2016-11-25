@@ -100,7 +100,7 @@ function CreateTemplate(data) {   // This function renders the template
 
 app.get('/', function (req, res) {
   console.log("Page loaded");
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 
 });
 
@@ -254,12 +254,6 @@ app.get('/logout', function (req,res){
 app.get('/blog', function (req, res) {
 
    });
-
-app.get('/test-bars', function(req, res){
-  res.render('index', {title: 'Cool Huh', condition: false});
-});
-
-
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
