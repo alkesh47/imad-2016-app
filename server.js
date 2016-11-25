@@ -100,7 +100,7 @@ function CreateTemplate(data) {   // This function renders the template
 
 app.get('/', function (req, res) {
   console.log("Page loaded");
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname,'ui', 'index.html'));
 
 });
 
